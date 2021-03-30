@@ -1,0 +1,63 @@
+<mi-componente-navbar></mi-componente-navbar>
+
+<div class="container">
+    <p class=" d-flex justify-content-center" style="color:white">
+        <span class="border-bottom border-primary">
+            <h4>Estado de ánimo</h4>
+        </span>
+    </p>
+    <div *ngIf="feelingAverage <0" class="progress">
+        <div class="progress-bar  bg-danger" role="progressbar" style="width: {{percentage}}%"
+            aria-valuenow="-0.0499999970197678" aria-valuemin="-1" aria-valuemax="0"></div>
+    </div>
+    <div *ngIf="feelingAverage>=0" class="progress">
+        <div class="progress-bar  bg-success" role="progressbar" style="width: {{percentage}}%"
+            aria-valuenow="-0.0499999970197678" aria-valuemin="-1" aria-valuemax="0"></div>
+    </div>
+</div>
+<br>
+<div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary"  (click)="orderByAScore()">Order By Ascendent Score</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary"  (click)="orderByDScore()">Order By Descendent Score</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary"  (click)="orderByADate()">Order By Ascendent Date</button>&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary"  (click)="orderByDDate()">Order By Descendent Date</button>&nbsp;&nbsp;
+</div>
+<br>
+<div class="">
+    <div class="row d-flex justify-content-center" *ngFor="let text of listText">
+        <div class="col-sm-3 ">
+            <div *ngIf="text.score >=0" class="card text-white bg-success mb-3 ">
+                <div class="card-header">
+                    <img src="https://i.imgur.com/0DSs8F3.jpg" alt="happy" width="70" height="70" />
+                    <div class="d-flex justify-content-right">
+                        <p class="card-text ">{{text.createdAt | date:'medium'}}</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Text: {{text.text}}</h5>
+                    <p class="card-text">Score: {{text.score}}</p>
+                    <p class="card-text">Magnitude: {{text.magnitude}}</p>
+                    <button type="button" class="btn btn-warning" (click)="deleteText(text._id)">Delete</button>
+                    
+                    
+                </div>
+            </div>
+            <div *ngIf="text.score<0" class="card text-white bg-danger mb-3">
+                <div class="card-header">
+                    <img src="https://i.imgur.com/8nLFCVP.png" alt="happy" width="70" height="70" />
+                    <div class="d-flex justify-content-right">
+                        <p class="card-text ">{{text.createdAt | date:'medium'}}</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{text.text}}</h5>
+                    <p class="card-text">{{text.score}}</p>
+                    <p class="card-text">{{text.magnitude}}</p>
+
+                    <button type="button" class="btn btn-warning" (click)="deleteText(text._id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mi-componente-footer></mi-componente-footer>

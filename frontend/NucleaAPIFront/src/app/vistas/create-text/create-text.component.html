@@ -1,0 +1,11 @@
+<mi-componente-navbar></mi-componente-navbar>
+<div class="p-3 mb-2 bg-white text-dark  container">
+<form  [formGroup]="textForm" #frmText="ngForm" (ngSubmit)="createTextForm(frmText)">
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Text to analyze</label>
+        <textarea formControlName="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <button  class="btn btn-primary">Add and analyze</button>
+</form>
+</div>
+<mi-componente-footer></mi-componente-footer>

@@ -1,0 +1,13 @@
+<div class="wrapper fadeInDown">
+  <div class="login-page">
+    <div class="form">
+      <form #frmRegister="ngForm" class="login-form" (ngSubmit)="onRegister(frmRegister)">
+        <input type="text" name="username" placeholder="username" ngModel required />
+        <input type="password" name="password" placeholder="password" ngModel required />
+        <input name="email" type="text" placeholder="email address" ngModel required />
+        <button>create</button>
+        <p class="message">Already registered? <a href="/auth/login">Sign In</a></p>
+      </form>
+    </div>
+  </div>
+</div>
